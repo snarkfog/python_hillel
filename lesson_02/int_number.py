@@ -19,5 +19,6 @@ The previous number for the number 0 is -1.
 """
 
 int_number = int(input("Please enter an integer number: "))
-print("The next number for the number {} is {}.".format(int_number, int_number + 1))
-print("The previous number for the number {} is {}.".format(int_number, int_number - 1))
+text = "The {} number for the number {} is {}."
+print(text.format("next", int_number, int_number + 1))
+print(text.format("previous", int_number, int_number - 1))
