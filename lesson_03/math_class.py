@@ -10,6 +10,6 @@ class_1 = int(input("Ученики первого класса: "))
 class_2 = int(input("Ученики второго класса: "))
 class_3 = int(input("Ученики третьего класса: "))
 
-tables = ((class_1 + class_2 + class_3) // 2) + ((class_1 + class_2 + class_3) % 2)
+tables = (class_1 // 2 + class_1 % 2) + (class_2 // 2 + class_2 % 2) + (class_3 // 2 + class_3 % 2)
 print("")
 print("Всего потребуется закупить {} парт.".format(tables))
