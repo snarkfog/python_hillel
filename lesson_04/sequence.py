@@ -24,7 +24,7 @@ while True:
         uneven += 1
     if n == 0:                          # Если введен 0
         quantity -= 1                   # Отнимаем одну итерацию, чтобы не учитывать 0 в количестве введенных чисел
-        average = total / quantity      # Вычисляем ср. арифм. не учитывая 0
+        average = total // quantity      # Вычисляем ср. арифм. не учитывая 0
         print("-" * 100)
         print("\tКоличество чисел: {}\n \tСумма чисел: {}\n \tСреднее арифметическое: {}\n \tЧетные: {}\n "
               "\tНечетные: {}\n".format(quantity, total, average, even, uneven))
