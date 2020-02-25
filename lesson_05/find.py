@@ -7,8 +7,11 @@
 s = input("Enter a string: ")
 ch = input("Введите symbol: ")
 i = 0
+a = 0
 
-while i < len(s):
-    if s[i] == ch:
-        print(i, end=", ")
-    i += 1
+while a != -1:
+    a = s.find(ch, i)
+    if a == -1:
+        continue
+    i = a + 1
+    print(a, end=", ")
