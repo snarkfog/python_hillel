@@ -7,18 +7,20 @@
 
 def arithmetic(x, y, z):
     if z == "+":
-        return x + y
+        res = x + y
     elif z == "-":
-        return x - y
+        res = x - y
     elif z == "*":
-        return x * y
+        res = x * y
     elif z == "/":
         if y != 0:
-            return x / y
+            res = x / y
         else:
-            return "На ноль делить нельзя."
+            res = "Ошибка! На ноль делить нельзя."
     else:
-        return "Неизвестная операция"
+        res = "Неизвестная операция"
+
+    return res
 
 
 first_number = float(input("Введите первое число: "))
@@ -28,4 +30,4 @@ operation = input("Введите операцию: ")
 result = arithmetic(first_number, second_number, operation)
 
 print("-" * 10)
-print("Результат:", result)
+print("Результат операции {} числа {} на число {} является: {}.".format(operation, first_number, second_number, result))
