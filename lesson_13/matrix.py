@@ -41,3 +41,22 @@ from random import randint
 m = int(input("Введите кол-во строк: "))
 n = int(input("Введите количество колонок: "))
 
+matrix = [[randint(10, 99) for j in range(1, n + 1)] for i in range(1, m + 1)]
+
+total = 0
+
+print()
+for i in range(m):
+    print(" ", end="")
+    for j in range(n):
+        print(matrix[i][j], end="  ")
+        total += matrix[i][j]
+    print("  ", total)
+    total = 0
+
+print()
+for j in range(n):
+    for i in range(m):
+        total += matrix[i][j]
+    print(total, end=" ")
+    sum_ = 0
