@@ -21,10 +21,10 @@ d = {
 lat = {}
 
 for i in d:
-    for j in d:
+    for j in d[i]:
         if j not in lat:
-            lst = []
-            lat[j] = lst
-        lat[j].append(i)
+            lat[j] = i
+        else:
+            lat[j] = lat[j] + ", " + i
 
 pprint(lat)
