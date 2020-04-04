@@ -12,9 +12,10 @@
  Полина Гусева 9 2 8 7 3 9 9 5 1 9 2 6
  Спиридов Тереньтьев 4 7 7 3 10 9 7 2 10 9 8 1
  Станислав Трердолобов 8 1 6 1 4 1 10 8 8 1 8 8
- Вывести на экран всех учащихся, чей средний балл меньше 5, также посчитать и вывести
-средний балл по классу. Так же,
- записать в новый файл всех учащихся в формате "Фамилия И. Ср. балл":
+
+ Вывести на экран всех учащихся, чей средний балл меньше 5, также посчитать и вывести средний балл по классу.
+ Так же, записать в новый файл всех учащихся в формате "Фамилия И. Ср. балл":
+
  Говорухи А. 5.83
  Петров В. 4.92
  Варфаломеев Г. 5.92
@@ -30,3 +31,39 @@
  Выравнивание колонок - желательно!
 """
 
+file_read = open("file_1_read.input.txt", "r", encoding="utf-8")
+read = file_read.read()
+file_read.close()
+
+lst = read.split("\n")
+for i in range(len(lst)):
+    lst[i] = lst[i].split()
+
+print()
+print("Учащиеся, чей средний балл меньше 5:")
+print()
+average = []
+average_class = 0
+
+for i in range(len(lst)):
+    total = 0
+    for j in range(2, 13):
+        total += int(lst[i][j])
+    average.append(round((total / 12), 2))
+    average_class += total / 12
+    if (total / 12) < 5:
+        print(lst[i][:2][0], lst[i][:2][1])
+
+print()
+print("Средний балл по классу:", round((average_class / 12), 2))
+
+file_write = open("file_1_read.output.txt", "w", encoding="utf-8")
+for i in range(12):
+    file_write.write(lst[i][:2][1])
+    file_write.write(" ")
+    file_write.write(lst[i][:2][0][0])
+    file_write.write(".")
+    file_write.write(" " * (16 - len(lst[i][:2][1])))
+    file_write.write(str(average[i]))
+    file_write.write("\n")
+file_write.close()

@@ -38,7 +38,7 @@
 
 from random import randint
 
-m = int(input("Введите кол-во строк: "))
+m = int(input("Введите количество строк: "))
 n = int(input("Введите количество колонок: "))
 
 matrix = [[randint(10, 99) for j in range(1, n + 1)] for i in range(1, m + 1)]
