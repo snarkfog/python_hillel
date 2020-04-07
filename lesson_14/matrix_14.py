@@ -63,3 +63,89 @@
  2 50 19 49 2 49 12 50 8 48
  224 224 253 268 272 280 287 292 301 334
 """
+
+from random import randint
+
+m = int(input("Введите размер матрицы: "))
+
+matrix = [[randint(1, 50) for i in range(m)] for i in range(m)]
+
+
+def matrix_print(m, matrix, message):
+
+    if message == 0:
+        message = "\tДо сортировки:"
+    else:
+        message = "\tПосле сортировки:"
+
+    # Вывод матрицы
+    print()
+    print(message)
+    for i in range(m):
+        for j in range(m):
+            print("{:>4}".format(matrix[i][j]), end="")
+        print("", " ")
+
+    # Создание списка сумм столбцов
+    total = 0  # Сумма стобца
+    lst = []  # Список сумм столбцов
+    for j in range(m):
+        for i in range(m):
+            total += matrix[i][j]
+        lst.append(total)
+        total = 0
+
+    # Вывод сумм столбцов
+    print()
+    for i in lst:
+        print("{:>4}".format(i), end="")
+    print()
+
+
+def matrix_sort(m, matrix):
+    # Создание списка сумм столбцов
+    total = 0  # Сумма столбца
+    lst = []  # Список сумм столбцов
+    for j in range(m):
+        for i in range(m):
+            total += matrix[i][j]
+        lst.append(total)
+        total = 0
+
+    # Сортировка столбцов и списка
+    for _ in range(m):
+        flag = True
+        for col in range(m - 1):
+            if lst[col] > lst[col + 1]:
+                for elem in range(m):
+                    matrix[elem][col], matrix[elem][col + 1] = matrix[elem][col + 1], matrix[elem][col]
+                lst[col], lst[col + 1] = lst[col + 1], lst[col]
+                flag = False
+        if flag:
+            break
+
+    # Сортировка элементов в столбцах
+    for col in range(m):
+        for j in range(m):
+            for i in range(m - 1):
+
+                if j % 2 == 1:  # Нечетные столбцы
+                    flag = True
+                    if matrix[i][j] > matrix[i + 1][j]:
+                        matrix[i][j], matrix[i + 1][j] = matrix[i + 1][j], matrix[i][j]
+                        flag = False
+                    if flag:
+                        continue
+
+                else:  # Четные столбцы
+                    flag = True
+                    if matrix[i][j] < matrix[i + 1][j]:
+                        matrix[i][j], matrix[i + 1][j] = matrix[i + 1][j], matrix[i][j]
+                        flag = False
+                    if flag:
+                        continue
+
+
+matrix_print(m, matrix, 0)
+matrix_sort(m, matrix)
+matrix_print(m, matrix, 1)
